@@ -1,10 +1,13 @@
+import { Button } from 'antd';
 import React from 'react';
-import Slide from '../components/Slide';
+import GetAnimeImage from '../hook/GetAnimeImage';
 
 
 function Test(props) {
     return (
-            <Slide />
+        <div>
+            <Button onClick={GetAnimeImage}>테스트 버튼입니다.</Button>
+        </div>
     );
 }
 
