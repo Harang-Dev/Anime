@@ -31,18 +31,6 @@ const ContentWrapper = styled.div`
 const StyledContent = styled(Content)`
   width: 100%;
   height: 100%;
-  background-color: #2a2a2a;  // 다크 그레이 톤
-  color: #e0e0e0;  // 텍스트 색상
-`;
-
-const GradientLayer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 20%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.8) 100%);
-  z-index: 1;  // ContentBox 위에 그라데이션 레이어가 오도록 설정
 `;
 
 const StyledFooter = styled(Footer)`
@@ -60,7 +48,6 @@ const App = () => (
       <StyledContent>
         <ContentBox />
       </StyledContent>
-      <GradientLayer />
     </ContentWrapper>
     <StyledFooter>Footer</StyledFooter>
   </AppContainer>
