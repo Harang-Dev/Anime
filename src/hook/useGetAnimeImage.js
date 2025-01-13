@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import fetchAnimeImage from '../hook/fetchAnimeImage';
+import fetchAnimeImage from '../hook/GetAnimeImage';
 
 const useGetAnimeImages = () => {
     return useInfiniteQuery({

@@ -1,14 +1,14 @@
-import { Button } from 'antd';
 import React from 'react';
-import GetAnimeImage from '../hook/GetAnimeImage';
-
-
-function Test(props) {
-    return (
-        <div>
-            <Button onClick={GetAnimeImage}>테스트 버튼입니다.</Button>
-        </div>
-    );
-}
-
+import { Pagination } from 'antd';
+const onShowSizeChange = (current, pageSize) => {
+  console.log(current, pageSize);
+};
+const Test = () => (
+    <Pagination
+      showSizeChanger
+      onShowSizeChange={onShowSizeChange}
+      defaultCurrent={3}
+      total={500}
+    />
+);
 export default Test;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import GetAnimeIamges from '../hook/GetAnimeImage';
+import fetchAnimeImage from '../hook/GetAnimeImage'; // 이 훅이 데이터를 반환한다고 가정합니다.
 
 const TopAnimeBox = styled.div`
     width: 73vw;
@@ -51,8 +51,8 @@ const Card = styled.div`
     font-weight: normal;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* 애니메이션 효과 추가 */
-    
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
     &:hover {
         transform: scale(1.05); /* hover 시 카드 확대 */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 그림자 효과 강조 */
@@ -62,15 +62,16 @@ const Card = styled.div`
 `;
 
 function TopContentBox() {
-    const [images, setImages] = useState([]);
+    const [animeImages, setAnimeImages] = useState([]);
     const [titles, setTitles] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const { imageUrls, Titles } = await GetAnimeIamges();
-            setImages(imageUrls);
+            const { imageUrls, Titles } = await fetchAnimeImage();  // fetchAnimeImage 훅이 데이터를 반환한다고 가정
+            setAnimeImages(imageUrls);
             setTitles(Titles);
         };
+
         fetchData();
     }, []);
 
@@ -82,9 +83,9 @@ function TopContentBox() {
                     <span style={{ fontSize: 20 }}>역대 최고 순위 애니메이션</span>
                 </HeaderTextBox>
                 <CardGrid>
-                    {images.map((image, index) => (
+                    {animeImages?.map((image, index) => (
                         <Card key={index} imageUrl={image}>
-                            <p style={{margin: '0 0 10px 10px'}}>{titles[index]}</p>
+                            <p style={{ margin: '0 0 10px 10px' }}>{titles[index]}</p>
                         </Card>
                     ))}
                 </CardGrid>
